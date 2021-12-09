@@ -45,7 +45,7 @@ class RestAuthProvider(object):
     async def check_password(self, user_id, password):
         logger.info("Got password check for " + user_id)
         data = {'user': {'id': user_id, 'password': password}}
-        r = requests.post(self.endpoint + '/_matrix-internal/identity/v1/check_credentials', json=data)
+        r = requests.post(self.endpoint + '/_matrix-internal/identity/v1/check_credentials', json=data,verify=False)
         r.raise_for_status()
         r = r.json()
         if not r["auth"]:
