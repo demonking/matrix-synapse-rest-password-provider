@@ -174,7 +174,7 @@ class RestAuthProvider(object):
 
             if "display_name" in profile and ((registration and self.config.setNameOnRegister) or (self.config.setNameOnLogin)):
                 display_name = profile["display_name"]
-                logger.info("Setting display name to '%s' based on profile data", display_name)
+                logger.info("Setting display name to '%s' based on profile data, localpart=%s", display_name,localpart)
                 await store.set_profile_displayname(localpart, display_name)
             else:
                 logger.info("Display name was not set because it was not given or policy restricted it")
